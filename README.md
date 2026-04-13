@@ -129,6 +129,45 @@ npm run preview
 npm run type-check
 ```
 
+## CI/CD 集成
+
+项目已配置完整的 **GitHub Actions CI/CD 工作流**，实现自动化持续集成和持续部署。
+
+### 工作流配置
+
+工作流文件：`.github/workflows/deploy.yml`
+
+### 执行阶段
+
+| 阶段 | 名称 | 执行条件 | 说明 |
+|------|------|----------|------|
+| ✅ | **Lint** | 代码提交时 | ESLint 代码检查 |
+| ✅ | **Type Check** | Lint 通过后 | TypeScript 类型检查 |
+| ✅ | **Build** | Type Check 通过后 | 项目构建验证 |
+| ✅ | **Deploy** | 仅 `main` 分支 | 自动部署到 Vercel |
+
+### 触发条件
+
+- **推送代码**：`push` 到 `main` 分支时自动触发
+- **拉取请求**：创建 `pull_request` 时自动触发（仅执行 CI 阶段，不部署）
+
+### 环境变量配置
+
+在 GitHub 仓库的 **Settings → Secrets and variables → Actions** 中配置以下 secrets：
+
+| 变量名 | 说明 | 获取方式 |
+|--------|------|----------|
+| `VERCEL_TOKEN` | Vercel 访问令牌 | Vercel 账户设置 → Tokens |
+| `VERCEL_ORG_ID` | Vercel 组织 ID | Vercel 项目设置 → General |
+| `VERCEL_PROJECT_ID` | Vercel 项目 ID | Vercel 项目设置 → General |
+
+### 工作流优势
+
+1. **自动化**：代码提交后自动执行检查和部署，无需手动操作
+2. **质量保障**：代码检查和类型检查确保代码质量
+3. **快速反馈**：构建失败时立即通知，快速定位问题
+4. **分支保护**：PR 合并前必须通过所有检查
+
 ## 部署方式
 
 ### Vercel（推荐）
