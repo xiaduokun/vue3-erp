@@ -1,8 +1,17 @@
 # 服装公司 ERP 系统
 
+![Vue Version](https://img.shields.io/badge/Vue-3.x-green.svg)
+![TypeScript](https://img.shields.io/badge/TypeScript-5.x-blue.svg)
+![Element Plus](https://img.shields.io/badge/Element%20Plus-2.x-purple.svg)
+![Vite](https://img.shields.io/badge/Vite-4.x-yellow.svg)
+
 ## 项目简介
 
 这是一个基于 Vue 3 + TypeScript + Element Plus 开发的服装公司 ERP 系统，旨在帮助服装企业实现数字化管理，提高运营效率。
+
+**在线演示**：https://vue3-erp-pc.vercel.app/
+
+**登录信息**：用户名 `admin`，密码 `123456`
 
 ## 技术栈
 
@@ -118,6 +127,50 @@ npm run preview
 
 ```bash
 npm run type-check
+```
+
+## 部署方式
+
+### Vercel（推荐）
+
+1. 访问 [Vercel](https://vercel.com) 注册账号
+2. 点击 "New Project" → 选择 GitHub 仓库
+3. 配置构建命令：`npm run build`
+4. 配置输出目录：`dist`
+5. 点击 "Deploy"
+
+### GitHub Pages
+
+1. 在 `vite.config.ts` 中添加配置：
+   ```typescript
+   base: '/vue3-erp/'
+   ```
+2. 构建项目：
+   ```bash
+   npm run build
+   ```
+3. 创建 gh-pages 分支：
+   ```bash
+   git checkout --orphan gh-pages
+   git rm -rf .
+   cp -r dist/* .
+   git add -A
+   git commit -m "Deploy"
+   git push origin gh-pages
+   ```
+4. 在 GitHub 仓库设置中配置 Pages
+
+### 本地开发
+
+```bash
+# 安装依赖
+npm install
+
+# 开发模式运行
+npm run dev
+
+# 构建生产版本
+npm run build
 ```
 
 ## 国际化
