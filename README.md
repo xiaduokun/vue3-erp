@@ -133,45 +133,16 @@ npm run type-check
 
 ### Vercel（推荐）
 
+已配置 **自动部署**：每次向 `main` 分支推送代码后，Vercel 会自动构建并部署新版本。
+
+**部署地址**：https://vue3-erp-pc.vercel.app
+
+**首次部署步骤**：
 1. 访问 [Vercel](https://vercel.com) 注册账号
 2. 点击 "New Project" → 选择 GitHub 仓库
 3. 配置构建命令：`npm run build`
 4. 配置输出目录：`dist`
 5. 点击 "Deploy"
-
-### GitHub Pages
-
-1. 在 `vite.config.ts` 中添加配置：
-   ```typescript
-   base: '/vue3-erp/'
-   ```
-2. 构建项目：
-   ```bash
-   npm run build
-   ```
-3. 创建 gh-pages 分支：
-   ```bash
-   git checkout --orphan gh-pages
-   git rm -rf .
-   cp -r dist/* .
-   git add -A
-   git commit -m "Deploy"
-   git push origin gh-pages
-   ```
-4. 在 GitHub 仓库设置中配置 Pages
-
-### 本地开发
-
-```bash
-# 安装依赖
-npm install
-
-# 开发模式运行
-npm run dev
-
-# 构建生产版本
-npm run build
-```
 
 ## 国际化
 
