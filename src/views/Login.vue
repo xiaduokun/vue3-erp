@@ -49,7 +49,6 @@ const rules = {
     { required: true, message: '请输入密码', trigger: 'blur' }
   ]
 }
-rules.push(arr)
 const handleLogin = () => {
   if (!loginFormRef.value) return
   

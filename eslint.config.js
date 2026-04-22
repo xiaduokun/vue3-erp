@@ -24,6 +24,7 @@ export default [
       vue: pluginVue
     },
     rules: {
+      'no-undef': 'error',
       'no-console': 'warn',
       'no-debugger': 'error',
       'vue/no-unused-vars': 'warn',
